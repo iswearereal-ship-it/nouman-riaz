@@ -1,8 +1,61 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ABOUT_TEXT, PERSONAL_INFO, getCurrentYear } from '../data/portfolioData';
-import { Check, Film, Sliders } from 'lucide-react';
+import { Check, Camera, RefreshCw, Film, Sparkles, Layers, Sliders } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
+  const [userPhoto, setUserPhoto] = useState<string | null>(null);
+  const [timecode, setTimecode] = useState('00:01:24:18');
+
+  // Load custom real photo from localStorage if saved
+  useEffect(() => {
+    const saved = localStorage.getItem('nouman_real_original_photo');
+    if (saved) {
+      setUserPhoto(saved);
+    }
+  }, []);
+
+  // Timecode counter for the motion graphics viewfinder
+  useEffect(() => {
+    let frame = 18;
+    let sec = 24;
+    const interval = setInterval(() => {
+      frame += 1;
+      if (frame >= 24) {
+        frame = 0;
+        sec += 1;
+        if (sec >= 60) sec = 0;
+      }
+      const pad = (n: number) => n.toString().padStart(2, '0');
+      setTimecode(`00:01:${pad(sec)}:${pad(frame)}`);
+    }, 120);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Handle direct file upload so Nouman's real face is NEVER altered by AI
+  const handlePhotoSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target?.result as string;
+        if (result) {
+          setUserPhoto(result);
+          try {
+            localStorage.setItem('nouman_real_original_photo', result);
+          } catch {
+            // quota handling
+          }
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleResetPhoto = () => {
+    localStorage.removeItem('nouman_real_original_photo');
+    setUserPhoto(null);
+  };
+
   const dynamicTimeline = ABOUT_TEXT.getTimeline();
   const currentYear = getCurrentYear();
 
@@ -29,43 +82,129 @@ export const AboutSection: React.FC = () => {
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left: Editorial Studio Identity & Principles */}
+          {/* Left: Motion Graphics Photo Viewfinder Frame */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="bg-[#121214] text-white p-7 rounded-xl border border-[#27272a] shadow-xl space-y-5">
-              <div className="flex items-center justify-between border-b border-[#222226] pb-4">
-                <div className="flex items-center gap-2.5">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#dc2626]" />
-                  <span className="font-extrabold text-xl tracking-tight text-white">
-                    NOUMAN RIAZ
-                  </span>
+            
+            {/* Cinematic Motion Graphics Card */}
+            <div className="relative rounded-2xl overflow-hidden bg-[#0c0c0e] border border-[#27272a] shadow-2xl p-2 group">
+              
+              {/* Outer Viewfinder Container */}
+              <div className="relative aspect-[4/5] w-full rounded-xl overflow-hidden bg-[#141417] flex items-center justify-center">
+                
+                {/* 4 Motion Graphics Viewfinder Corners */}
+                <span className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#dc2626] z-20 pointer-events-none" />
+                <span className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#dc2626] z-20 pointer-events-none" />
+                <span className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#dc2626] z-20 pointer-events-none" />
+                <span className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#dc2626] z-20 pointer-events-none" />
+
+                {/* Top HUD Graphics Bar */}
+                <div className="absolute top-4 inset-x-6 z-20 flex items-center justify-between text-[11px] font-mono text-white/90 pointer-events-none bg-black/60 backdrop-blur-md px-3 py-1.5 rounded border border-white/10">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-[#dc2626] animate-ping" />
+                    <span className="font-bold text-[#ef4444]">REC</span>
+                    <span className="text-white/60">4K DCI</span>
+                  </div>
+                  <div className="text-[#a1a1aa] font-mono">
+                    {timecode}
+                  </div>
                 </div>
-                <span className="text-[11px] font-mono text-[#a1a1aa] uppercase tracking-wider">
-                  Post-Production
-                </span>
+
+                {/* The Photo or Upload Dropzone */}
+                {userPhoto ? (
+                  /* Display Nouman's 100% UNTOUCHED REAL PHOTO with Motion Graphics Overlays */
+                  <div className="relative w-full h-full">
+                    <img
+                      src={userPhoto}
+                      alt="Nouman Riaz - Professional Video Editor & Motion Graphics Artist"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                    />
+
+                    {/* Subtle cinematic vignette */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-black/20 pointer-events-none" />
+
+                    {/* Change Photo Button */}
+                    <div className="absolute top-14 right-4 z-30">
+                      <label
+                        htmlFor="nouman-real-photo-input"
+                        title="Click to change your photo"
+                        className="cursor-pointer bg-black/80 hover:bg-[#dc2626] text-white text-[11px] font-mono px-3 py-1.5 rounded-md backdrop-blur-md border border-white/20 transition-all flex items-center gap-1.5 shadow-lg"
+                      >
+                        <Camera className="w-3.5 h-3.5 text-[#ef4444]" />
+                        <span>Change Photo</span>
+                      </label>
+                      <input
+                        id="nouman-real-photo-input"
+                        type="file"
+                        accept="image/*"
+                        onChange={handlePhotoSelect}
+                        className="hidden"
+                      />
+                    </div>
+                  </div>
+                ) : (
+                  /* Upload Prompt Dropzone with Motion Graphics Graphics */
+                  <div className="p-6 text-center space-y-4 relative z-10 w-full flex flex-col items-center justify-center">
+                    
+                    {/* Animated Center Focus Ring */}
+                    <div className="w-20 h-20 rounded-full border-2 border-dashed border-[#dc2626]/80 flex items-center justify-center animate-[spin_20s_linear_infinite] p-2">
+                      <div className="w-full h-full rounded-full border border-white/20 flex items-center justify-center">
+                        <Camera className="w-7 h-7 text-white" />
+                      </div>
+                    </div>
+
+                    <div className="space-y-1">
+                      <p className="font-extrabold text-base text-white tracking-tight">
+                        Apni Original Photo Add Karein
+                      </p>
+                      <p className="text-xs text-[#a1a1aa] max-w-xs mx-auto leading-relaxed">
+                        Aapka real face 100% untouched rahega. Direct apni photo select karein, yeh graphics ke sath lag jayegi.
+                      </p>
+                    </div>
+
+                    {/* One-Click Upload Button */}
+                    <label
+                      htmlFor="nouman-photo-uploader"
+                      className="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#dc2626] hover:bg-[#b91c1c] text-white text-xs font-bold font-mono tracking-wide shadow-lg shadow-red-950/60 transition-all active:scale-95"
+                    >
+                      <Camera className="w-4 h-4" />
+                      <span>Select Your Photo File</span>
+                    </label>
+                    <input
+                      id="nouman-photo-uploader"
+                      type="file"
+                      accept="image/*"
+                      onChange={handlePhotoSelect}
+                      className="hidden"
+                    />
+
+                    <p className="text-[10px] font-mono text-[#71717a]">
+                      PNG ya JPG &middot; Saved securely in your browser
+                    </p>
+                  </div>
+                )}
+
+                {/* Lower-Third Motion Graphics Banner */}
+                <div className="absolute bottom-4 inset-x-6 z-20 bg-black/85 backdrop-blur-md p-3.5 rounded-lg border border-white/10 text-white">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 rounded-full bg-[#dc2626]" />
+                        <p className="font-extrabold text-base tracking-tight">NOUMAN RIAZ</p>
+                      </div>
+                      <p className="text-[11px] font-mono text-[#ef4444] uppercase tracking-wider mt-0.5 font-semibold">
+                        Lead Video Editor &middot; Motion Artist
+                      </p>
+                    </div>
+
+                    <div className="text-right font-mono text-[10px] text-[#a1a1aa]">
+                      <span className="block text-white font-bold">SINCE 2021</span>
+                      <span>5+ YRS CRAFT</span>
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
-              <div>
-                <p className="text-xs font-mono uppercase text-[#dc2626] tracking-wider font-semibold">
-                  Video Editor &amp; Motion Graphics Artist
-                </p>
-                <p className="text-xs text-[#a1a1aa] mt-2 leading-relaxed">
-                  Crafting narrative documentaries, high-retention talking-head creator videos, multi-track podcasts, and kinetic motion design.
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#222226] grid grid-cols-2 gap-4 text-xs font-mono">
-                <div>
-                  <span className="text-[#71717a] block text-[10px] uppercase tracking-wider">Active In Craft</span>
-                  <span className="text-white font-bold text-sm">Since 2021</span>
-                </div>
-                <div>
-                  <span className="text-[#71717a] block text-[10px] uppercase tracking-wider">Direct Availability</span>
-                  <span className="text-emerald-400 font-semibold text-xs flex items-center gap-1.5 mt-0.5">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                    Open For Work
-                  </span>
-                </div>
-              </div>
             </div>
 
             {/* Quick Guiding Principles */}
@@ -92,6 +231,7 @@ export const AboutSection: React.FC = () => {
                 </li>
               </ul>
             </div>
+
           </div>
 
           {/* Right: Authentic Biography & Evolution Timeline (Auto-Updating Every Year) */}
