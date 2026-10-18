@@ -61,9 +61,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenShowreel, onOpen
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-[1.08] mb-6">
+            <h1
+              style={{ fontWeight: 900 }}
+              className="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.15] sm:leading-[1.08] mb-6 drop-shadow-md"
+            >
               I Turn Raw Footage Into{' '}
-              <span className="relative inline-block text-white">
+              <span
+                style={{ fontWeight: 900 }}
+                className="relative inline-block text-white font-black"
+              >
                 Stories That Matter.
                 <span className="absolute left-0 bottom-1 w-full h-[3px] bg-[#dc2626]" />
               </span>
