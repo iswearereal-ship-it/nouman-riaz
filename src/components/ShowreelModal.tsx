@@ -4,6 +4,9 @@ import docThumb from '../assets/images/project_doc_1792296098333.jpg';
 import studioThumb from '../assets/images/project_studio_1792296120148.jpg';
 import motionThumb from '../assets/images/project_motion_1792296139688.jpg';
 import aiCinematicThumb from '../assets/images/project_aicinematic_1792296158501.jpg';
+import jenniferAnistonThumb from '../assets/images/jennifer_aniston_doc_thumb_1792318325367.jpg';
+import talkingHeadImanThumb from '../assets/images/talking_head_iman_thumb_1792319292714.jpg';
+import pricingMotionThumb from '../assets/images/pricing_motion_thumb_1792318521249.jpg';
 
 interface ShowreelModalProps {
   isOpen: boolean;
@@ -20,22 +23,22 @@ export const ShowreelModal: React.FC<ShowreelModalProps> = ({ isOpen, onClose, o
 
   const reelSegments = [
     {
-      title: "Documentary Narrative Arc",
+      title: "Documentary Biographical Arc",
       time: "00:00 — 00:45",
-      thumb: docThumb,
-      highlight: "Emotional pacing, high altitude alpine b-roll, orchestral crescendo, multi-track atmospheric sound design."
+      thumb: jenniferAnistonThumb,
+      highlight: "Emotional pacing, archival photo tracking, kinetic paper cutouts, and multi-track Foley sound design."
     },
     {
       title: "Talking-Head Creator Retention",
       time: "00:45 — 01:25",
-      thumb: studioThumb,
-      highlight: "Pattern interrupts, surgical vocal jump cuts, visual punch-ins, graphics overlays."
+      thumb: talkingHeadImanThumb,
+      highlight: "Pattern interrupts, surgical vocal jump cuts, animated Premiere Pro icons, and textured luxury graphics."
     },
     {
       title: "Kinetic Motion & Title Design",
       time: "01:25 — 02:05",
-      thumb: motionThumb,
-      highlight: "3D typography sequences, keyframed bezier easing, broadcast packaging."
+      thumb: pricingMotionThumb,
+      highlight: "3D typography sequences, banknote rotational choreography, barcode branding, and broadcast pacing."
     },
     {
       title: "AI Cinematic & Generative Integration",

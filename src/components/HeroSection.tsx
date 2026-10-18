@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Maximize2, ArrowDown, Film, Sparkles, CheckCircle2 } from 'lucide-react';
 import { PERSONAL_INFO, getExperienceYears } from '../data/portfolioData';
-import docThumb from '../assets/images/project_doc_1792296098333.jpg';
+import talkingHeadImanThumb from '../assets/images/talking_head_iman_thumb_1792319292714.jpg';
 
 interface HeroSectionProps {
   onOpenShowreel: () => void;
@@ -125,7 +125,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenShowreel, onOpen
                     <div className="w-2.5 h-2.5 rounded-full bg-[#22c55e]/60" />
                   </div>
                   <span className="text-[11px] text-[#d4d4d8] font-semibold pl-2">
-                    SHOWREEL // MASTER CUT
+                    SHOWREEL // TALKING-HEAD &amp; CREATOR CUT
                   </span>
                 </div>
                 
@@ -142,8 +142,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenShowreel, onOpen
               {/* Video Thumbnail Screen */}
               <div className="relative aspect-video w-full bg-black overflow-hidden">
                 <img
-                  src={docThumb}
-                  alt="Nouman Riaz Video Editing Showreel Preview"
+                  src={talkingHeadImanThumb}
+                  alt="Nouman Riaz Talking-Head & Creator Video Editing Showcase"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90"
                   loading="eager"
                 />

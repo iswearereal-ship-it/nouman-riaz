@@ -11,6 +11,10 @@ import motionThumb from '../assets/images/project_motion_1792296139688.jpg';
 import aiCinematicThumb from '../assets/images/project_aicinematic_1792296158501.jpg';
 import noumanExactPhoto from '../assets/images/nouman_exact_photo_1792297234462.jpg';
 import jenniferAnistonThumb from '../assets/images/jennifer_aniston_doc_thumb_1792318325367.jpg';
+import pricingMotionThumb from '../assets/images/pricing_motion_thumb_1792318521249.jpg';
+import talkingHeadImanThumb from '../assets/images/talking_head_iman_thumb_1792319292714.jpg';
+import podcastStudioCustomThumb from '../assets/images/podcast_studio_custom_thumb_1792319367702.jpg';
+import viralReelsCustomThumb from '../assets/images/viral_reels_custom_thumb_1792319403375.jpg';
 
 export interface Project {
   id: string;
@@ -206,41 +210,51 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "project-2",
-    title: "The Zero-To-One Creator Blueprint",
+    title: "The Secret Editing Style: Iman Gadzhi Talking-Head Masterclass",
     category: "Talking-Head Videos",
     categorySlug: "talking-head",
-    clientNote: "Creator Channel Showcase",
-    description: "An engaging 14-minute educational breakdown for YouTube. Designed with meticulous retention hooks, custom kinetic graphics, and contextual B-roll that drove a high watch-through rate.",
-    thumbnail: studioThumb,
-    duration: "14:15",
-    software: ["Adobe Premiere Pro", "CapCut"],
+    clientNote: "Creator Masterclass Edit by Nouman",
+    description: "An educational talking-head breakdown analyzing the secrets of luxurious, minimalistic editing in Premiere Pro. Features dynamic pattern interrupts, kinetic icons, textured paper circles, acoustic sound stage framing, and audience retention pacing.",
+    thumbnail: talkingHeadImanThumb,
+    duration: "00:33",
+    software: ["Adobe Premiere Pro", "After Effects", "CapCut"],
     role: "Video Editor & Pacing Specialist",
-    aspectRatio: "16:9",
+    aspectRatio: "9:16",
     breakdown: {
-      pacingNotes: "Pattern interrupts every 4 to 7 seconds without feeling frenetic. Used subtle push-ins on key thesis statements to keep the viewer anchored.",
-      soundDesign: "Clean vocal compression, subtle tape clicks, soft UI whooshes, and discreet background lo-fi acoustic tracks.",
-      colorGrading: "Warm charcoal studio backdrop with rich skin tone contrast and natural ambient lamp glow."
+      pacingNotes: "Pattern interrupts every 3 to 5 seconds: subtle push-ins on key thesis statements, animated Premiere Pro icons, and smooth wipes between creator and B-roll.",
+      soundDesign: "Multi-track sound design: mechanical keyboard taps, digital interface whooshes, subtle pops, and radio-broadcast vocal leveling.",
+      colorGrading: "Warm acoustic wood slats background with balanced skin tone clarity and natural ambient RGB lamp glow."
     },
-    isPlaceholder: true
+    beforeAfter: {
+      rawLabel: "Raw Single-Camera Studio Feed",
+      finalLabel: "Minimal Luxury Motion Cuts & Graphics",
+      description: "Transformation from a single static camera take into a high-engagement, pattern-interrupted viral masterclass."
+    },
+    isPlaceholder: false
   },
   {
     id: "project-3",
-    title: "Kinetic Motion Package & Broadcast Title Sequence",
+    title: "Your Pricing Is a Brand Signal: Kinetic Motion Design",
     category: "Motion Graphics",
     categorySlug: "motion-graphics",
-    clientNote: "Brand Motion Package",
-    description: "A bold, modern title sequence and animated lower-third packaging. Employs clean 3D typography, subtle depth-of-field, and typographic rhythm tailored for premium episodic series.",
-    thumbnail: motionThumb,
-    duration: "01:10",
-    software: ["Adobe Premiere Pro", "Adobe After Effects"],
-    role: "Motion Graphics & Title Designer",
-    aspectRatio: "16:9",
+    clientNote: "Commercial Motion Design by Nouman",
+    description: "An editorial motion graphics piece exploring luxury brand positioning, pricing psychology, and visual hierarchy. Features kinetic typography, rotational banknote elements, minimalist barcode accents, seamless depth-of-field masking, and crisp Foley sound design.",
+    thumbnail: pricingMotionThumb,
+    duration: "00:18",
+    software: ["Adobe After Effects", "Adobe Premiere Pro", "CapCut"],
+    role: "Motion Graphics Artist & Creative Animator",
+    aspectRatio: "9:16",
     breakdown: {
-      pacingNotes: "Tight kinetic keyframing matching industrial beat cues; seamless camera push-through transitions between title cards.",
-      soundDesign: "Mechanical clicks, cinematic impacts, textural vinyl crackles, and riser transitions.",
-      colorGrading: "High contrast monochrome with vivid red accents for key typographical hierarchy."
+      pacingNotes: "Fluid typographic easing and keyframing synchronized with speech cadences and conceptual contrasts (brand positioning vs. margin).",
+      soundDesign: "Ambient atmospheric corporate synth pad, subtle paper whooshes, tape clicks, and crystal-clear voiceover equalization.",
+      colorGrading: "High-contrast monochrome editorial backdrop with intentional red neon glow on key thesis statements against pitch black frames."
     },
-    isPlaceholder: true
+    beforeAfter: {
+      rawLabel: "Static Voiceover & Typography Script",
+      finalLabel: "Full Kinetic Motion Architecture",
+      description: "Transformation from a static brand thesis into a high-energy kinetic visual story."
+    },
+    isPlaceholder: false
   },
   {
     id: "project-4",
@@ -263,12 +277,12 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "project-5",
-    title: "The Dialogue Room: Multi-Cam Deep Dive",
+    title: "The Deep Dive Podcast #24: Multi-Cam Broadcast Dialogue",
     category: "Podcast Editing",
     categorySlug: "podcast",
     clientNote: "Podcast Studio Showcase",
     description: "Full multi-camera video podcast editing with automatic speech cut detection, intelligent speaker framing, multi-track audio cleanup, and viral quote highlight markers.",
-    thumbnail: studioThumb,
+    thumbnail: podcastStudioCustomThumb,
     duration: "48:10",
     software: ["Adobe Premiere Pro", "Audition"],
     role: "Multi-Cam Video Editor & Dialogue Engineer",
@@ -278,16 +292,16 @@ export const PROJECTS: Project[] = [
       soundDesign: "Room noise cancellation, multiband compression for radio broadcast vocal clarity, and de-essing.",
       colorGrading: "Matched three distinct camera sensor color profiles to an identical neutral studio grade."
     },
-    isPlaceholder: true
+    isPlaceholder: false
   },
   {
     id: "project-6",
-    title: "Hyper-Paced Kinetic Reels Collection",
+    title: "Hyper-Paced Kinetic Viral Reels Package",
     category: "Short-Form Content",
     categorySlug: "short-form",
-    clientNote: "Social Growth Package",
+    clientNote: "Social Growth Package by Nouman",
     description: "Curated series of vertical short-form reels engineered for TikTok and Instagram. Featuring dynamic captions, custom sound effects, punchy zooms, and seamless loop endpoints.",
-    thumbnail: motionThumb,
+    thumbnail: viralReelsCustomThumb,
     duration: "00:45",
     software: ["CapCut", "Premiere Pro"],
     role: "Short-Form Content Specialist",
@@ -297,7 +311,7 @@ export const PROJECTS: Project[] = [
       soundDesign: "Kinetic pop effects, whip transitions, bass drops, and auto-ducked trending musical bed.",
       colorGrading: "Punchy, mobile-optimized saturation with sharp high-contrast clarity."
     },
-    isPlaceholder: true
+    isPlaceholder: false
   }
 ];
 
