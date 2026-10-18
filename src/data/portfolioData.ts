@@ -10,6 +10,7 @@ import studioThumb from '../assets/images/project_studio_1792296120148.jpg';
 import motionThumb from '../assets/images/project_motion_1792296139688.jpg';
 import aiCinematicThumb from '../assets/images/project_aicinematic_1792296158501.jpg';
 import noumanExactPhoto from '../assets/images/nouman_exact_photo_1792297234462.jpg';
+import jenniferAnistonThumb from '../assets/images/jennifer_aniston_doc_thumb_1792318325367.jpg';
 
 export interface Project {
   id: string;
@@ -181,27 +182,27 @@ export const PROJECT_CATEGORIES = [
 export const PROJECTS: Project[] = [
   {
     id: "project-1",
-    title: "Shadows on the Ridge: High Altitude Expedition",
+    title: "From Rejection to $320M: The Jennifer Aniston Story",
     category: "Documentary Films",
     categorySlug: "documentary",
-    clientNote: "Documentary Showcase Project",
-    description: "A 22-minute cinematic documentary exploring the human resilience of high-altitude Himalayan mountaineers. Features multi-camera alpine footage, complex archival integration, and an intense atmospheric score.",
-    thumbnail: docThumb,
-    duration: "21:40",
-    software: ["Adobe Premiere Pro", "Audition"],
-    role: "Lead Editor, Sound Design & Colorist",
-    aspectRatio: "2.39:1",
+    clientNote: "Documentary Short for @MotionPeaks",
+    description: "A fast-paced biographical documentary short detailing how resilience turned early Hollywood rejections into a multi-million-dollar entertainment legacy. Features kinetic paper cutout collage, newspaper headline tracking, dynamic Foley sound design, and high-retention pacing.",
+    thumbnail: jenniferAnistonThumb,
+    duration: "00:42",
+    software: ["Adobe Premiere Pro", "CapCut", "After Effects"],
+    role: "Lead Video Editor & Motion Graphics Animator",
+    aspectRatio: "9:16",
     breakdown: {
-      pacingNotes: "Built slow, deliberate build-ups mirroring the physical exhaustion of high altitude climbs, punctuated by rapid cuts during sudden mountain storms.",
-      soundDesign: "Composed a 36-track audio environment with real wind foley, mountain ice cracking, laboured breathing, and distant sub-bass rumbles.",
-      colorGrading: "Emphasized cold glacial slate tones with warm skin highlights and natural snow roll-off to preserve highlight detail."
+      pacingNotes: "Engineered for 85%+ retention: magnetic biographical curiosity hook in the first 2 seconds, followed by rapid 1.5s cuts between childhood struggles, Friends stardom, and award-winning vindication.",
+      soundDesign: "Multi-layered Foley soundscape: real paper crinkles, newspaper slams, sub-bass riser drops, camera shutter clicks, and clean vocal compression.",
+      colorGrading: "Dark textured paper grid background contrasted with bold red alert highlights, glowing neon subject cutouts, and kinetic dual-color subtitle typography."
     },
     beforeAfter: {
-      rawLabel: "Flat Log Camera Feed",
-      finalLabel: "Color Graded & Sound Designed",
-      description: "Demonstrating the transformation from raw flat alpine footage into a high-contrast, filmic cinematic look with full acoustic depth."
+      rawLabel: "Raw Archival Footage & Clippings",
+      finalLabel: "Kinetic Paper Collage & Sound Design",
+      description: "Transformation from loose archival press clippings into an energetic, multi-layered kinetic documentary short."
     },
-    isPlaceholder: true
+    isPlaceholder: false
   },
   {
     id: "project-2",
