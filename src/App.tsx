@@ -15,6 +15,7 @@ import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ProjectModal } from './components/ProjectModal';
 import { ShowreelModal } from './components/ShowreelModal';
+import { MacMiniStudioAnimation } from './components/MacMiniStudioAnimation';
 import { Project } from './data/portfolioData';
 
 export default function App() {
@@ -66,6 +67,9 @@ export default function App() {
 
         {/* Direct WhatsApp & Inquiry Form Contact */}
         <ContactSection initialService={inquiryService} />
+
+        {/* 3D Interactive Mac Mini M5 Studio & Premiere Pro Motion Graphics Suite */}
+        <MacMiniStudioAnimation />
       </main>
 
       {/* Footer */}
